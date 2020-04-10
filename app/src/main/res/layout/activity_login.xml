@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="16dp"
     android:gravity="top"
+    android:clipToPadding="true"
     android:orientation="vertical"
     >
 
@@ -14,9 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="62dp"
-        android:alpha="0.05"
+        android:paddingBottom="16dp"
         app:labelText="@string/login_label_login"
-        app:singleLine="true">
+        app:singleLine="true"
+        app:panelBackgroundColor="@color/colorSurfBackgroundLighter">
 
         <studio.carbonylgroup.textfieldboxes.ExtendedEditText
             android:id="@+id/loginTextFieldLoginExtended"
@@ -29,7 +31,7 @@
         android:id="@+id/loginTextFieldPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alpha="0.05"
+        app:panelBackgroundColor="@color/colorSurfBackgroundLighter"
         app:labelText="@string/login_label_password"
         app:singleLine="true">
 
