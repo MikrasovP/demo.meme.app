@@ -3,4 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorSurfBackground">#23213F</color>
+    <color name="colorSurfBackgroundLighter">#312F51</color>
+    <color name="colorSurfAccent">#1EF0D7</color>
+    <color name="colorSurfError">#FF575D</color>
+    <color name="colorSurfText">#FFFFFF</color>
 </resources>
