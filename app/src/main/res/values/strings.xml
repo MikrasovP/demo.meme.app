@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MemeApp</string>
+    <string name="login_label_login">Логин</string>
+    <string name="login_label_password">Пароль</string>
+    <string name="login_button">ВОЙТИ</string>
+    <string name="empty_field_error">Поле не может быть пустым</string>
 </resources>
