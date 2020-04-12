@@ -21,7 +21,10 @@
         <studio.carbonylgroup.textfieldboxes.ExtendedEditText
             android:id="@+id/loginTextFieldLoginExtended"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorSurfText"
+            android:inputType="phone"
+            android:digits="0123456789+" />
 
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -32,12 +35,18 @@
         android:layout_gravity="top"
         app:labelText="@string/login_label_password"
         app:panelBackgroundColor="@color/colorSurfBackgroundLighter"
-        app:singleLine="true">
+        app:singleLine="true"
+        app:endIcon="@drawable/ic_hidden_password"
+        app:helperText="1"
+        app:maxCharacters="@integer/password_length"
+        app:minCharacters="@integer/password_length" >
 
         <studio.carbonylgroup.textfieldboxes.ExtendedEditText
             android:id="@+id/loginTextFieldPasswordExtended"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorSurfText"
+            />
 
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -56,11 +65,9 @@
                 android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-
                 android:background="@drawable/login_button"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="onLoginButtonClicked"
                 android:text="@string/login_button"
                 android:textColor="@color/colorSurfBackground"/>
 
