@@ -19,4 +19,8 @@
         <item name="android:textColorTertiary">@color/colorSurfTertiary</item>
     </style>
 
+    <style name="SurfTheme.DarkAccent" parent="SurfTheme">
+        <item name="colorAccent">@color/colorSurfAccentDark</item>
+    </style>
+
 </resources>
