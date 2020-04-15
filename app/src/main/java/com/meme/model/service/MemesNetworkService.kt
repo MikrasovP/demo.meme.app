@@ -28,13 +28,15 @@ object MemesNetworkService {
 
     fun auth(
         login: String,
-        password: String
+        password: String,
+        onSuccess: (AuthInfoDto) -> Unit,
+        onError: (Throwable) -> Unit
     ) {
-        /*memesApi.login(LoginUserRequestDto(login, password))*/
         var authInfoDto: AuthInfoDto
         memesApi.login(LoginUserRequestDto(login, password)).enqueue(RetrofitCallback<AuthInfoDto>({
+            onSuccess(it)
         }, {
-            println("Here is an error!")
+            onError(it)
         }))
     }
 
