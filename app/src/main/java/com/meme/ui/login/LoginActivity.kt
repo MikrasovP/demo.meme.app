@@ -36,10 +36,9 @@ class LoginActivity : AppCompatActivity() {
         ).show()
     }
 
-    fun showSpinner(view: View) {
+    fun showSpinnerOnButton(view: View) {
         view.visibility = View.INVISIBLE
-        val bar: ProgressBar = findViewById(R.id.loginProgressBar)
-        bar.visibility = View.VISIBLE
+        loginProgressBar.visibility = View.VISIBLE
     }
 
 

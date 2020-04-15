@@ -39,7 +39,7 @@
         app:endIcon="@drawable/ic_hidden_password"
         app:helperText="1"
         app:maxCharacters="@integer/password_length"
-        app:minCharacters="@integer/password_length" >
+        >
 
         <studio.carbonylgroup.textfieldboxes.ExtendedEditText
             android:id="@+id/passwordExtendedET"

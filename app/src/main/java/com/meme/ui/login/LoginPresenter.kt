@@ -1,6 +1,7 @@
 package com.meme.ui.login
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.text.InputType
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Button
 import com.meme.R
 import com.meme.model.dto.AuthInfoDto
 import com.meme.model.service.MemesNetworkService
+import com.meme.ui.main.MainActivity
 import studio.carbonylgroup.textfieldboxes.ExtendedEditText
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes
 
@@ -61,6 +63,11 @@ class LoginPresenter(
         isLoggedIn = true
     }
 
+    private fun moveToMainActivity() {
+        val intent = Intent(activity, MainActivity::class.java)
+        activity.startActivity(intent)
+    }
+
     private fun onErrorResponse(t: Throwable) {
         isLoggedIn = false
         activity.showError()
@@ -68,21 +75,31 @@ class LoginPresenter(
     }
 
     private fun onLoginButtonClicked(view: View) {
-        if (passwordExtendedET.length() == 8 &&
-            loginExtendedET.length() != 0
-        ) {
-            activity.showSpinner(view)
-            auth(loginExtendedET.text.toString(),
-                passwordExtendedET.text.toString())
-        } else {
-            passwordTF.setError(
-                activity.applicationContext.resources.getString(R.string.empty_field_error),
-                false
-            )
-            loginTF.setError(
-                activity.applicationContext.resources.getString(R.string.empty_field_error),
-                false
-            )
+        when {
+            passwordExtendedET.length() != 8 -> {
+                passwordTF.setError(
+                    "Пароль должен содержать %d цифр".format(
+                        activity.resources.getInteger(R.integer.password_length)
+                    ),
+                    false
+                )
+
+            }
+            loginExtendedET.length() == 0 -> {
+                loginTF.setError(
+                    activity.applicationContext.resources.getString(R.string.empty_field_error),
+                    false
+                )
+            }
+            else -> {
+                activity.showSpinnerOnButton(view)
+                auth(
+                    loginExtendedET.text.toString(),
+                    passwordExtendedET.text.toString()
+                )
+                if(isLoggedIn)
+                    moveToMainActivity()
+            }
         }
     }
 
