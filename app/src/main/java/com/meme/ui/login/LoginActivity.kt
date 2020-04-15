@@ -1,4 +1,4 @@
-package com.meme
+package com.meme.ui.login
 
 import android.app.Activity
 import android.os.Bundle
@@ -6,18 +6,40 @@ import android.text.InputType
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.meme.R
+import com.meme.model.service.MemesNetworkService
 import kotlinx.android.synthetic.main.activity_login.*
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes
 
-class LoginActivity : Activity() {
+class LoginActivity : AppCompatActivity() {
+
+    val presenter = LoginPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        setButtonListener()
+        initTextFieldLogin()
+        initTextFieldPassword()
+    }
+
+    private fun showError(){
+        Toast.makeText(
+            this,
+            R.string.login_error,
+            Toast.LENGTH_LONG
+        ).show()
+    }
+
+    private fun setButtonListener() {
         val loginButton: Button = findViewById(R.id.loginButton)
         loginButton.setOnClickListener { view -> onLoginButtonClicked(view) }
+    }
 
+    private fun initTextFieldLogin() {
         val loginTextFieldLogin: TextFieldBoxes = findViewById(R.id.loginTextFieldLogin)
         loginTextFieldLogin.setSimpleTextChangeWatcher { theNewText, isError ->
             onLoginFieldTextChanged(
@@ -25,7 +47,9 @@ class LoginActivity : Activity() {
                 isError
             )
         }
+    }
 
+    private fun initTextFieldPassword() {
         val loginTextFieldPassword: TextFieldBoxes = findViewById(R.id.loginTextFieldPassword)
         loginTextFieldPassword.endIconImageButton.setOnClickListener {
             onEyeIconClick(loginTextFieldPassword)
@@ -41,9 +65,10 @@ class LoginActivity : Activity() {
     private fun onLoginButtonClicked(view: View) {
         if (loginTextFieldPasswordExtended.length() == 8 &&
             loginTextFieldLoginExtended.length() != 0
-        )
+        ) {
             showSpinner(view)
-        else {
+            sendAuthRequest()
+        } else {
             loginTextFieldPassword.setError(
                 resources.getString(R.string.empty_field_error), false
             )
@@ -51,6 +76,11 @@ class LoginActivity : Activity() {
                 resources.getString(R.string.empty_field_error), false
             )
         }
+    }
+
+    private fun sendAuthRequest() {
+        presenter.auth(loginTextFieldLoginExtended.text.toString(),
+            loginTextFieldPasswordExtended.text.toString())
     }
 
     private fun showSpinner(view: View) {
