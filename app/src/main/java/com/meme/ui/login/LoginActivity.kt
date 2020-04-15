@@ -5,7 +5,10 @@ import android.text.InputType
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
+import com.google.android.material.snackbar.Snackbar
 import com.meme.R
 import kotlinx.android.synthetic.main.activity_login.*
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -28,12 +31,16 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    fun showError(){
-        Toast.makeText(
-            this,
-            R.string.login_error,
-            Toast.LENGTH_LONG
-        ).show()
+    fun showError() {
+        Snackbar.make(loginButton, R.string.login_error, Snackbar.LENGTH_LONG)
+            .setBackgroundTint(
+                ResourcesCompat.getColor(
+                    resources,
+                    R.color.colorSurfBackgroundLighter,
+                    theme
+                )
+            )
+            .show()
     }
 
     fun showSpinnerOnButton(view: View) {
@@ -41,6 +48,11 @@ class LoginActivity : AppCompatActivity() {
         loginProgressBar.visibility = View.VISIBLE
     }
 
+    fun hideSpinnerOnButton(view: View) {
+        loginProgressBar.visibility = View.INVISIBLE
+        view.visibility = View.VISIBLE
+
+    }
 
 
 }

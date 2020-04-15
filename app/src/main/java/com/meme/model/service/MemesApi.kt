@@ -2,6 +2,7 @@ package com.meme.model.service
 
 import com.meme.model.dto.AuthInfoDto
 import com.meme.model.dto.LoginUserRequestDto
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -12,7 +13,7 @@ interface MemesApi {
     @POST("auth/login")
     fun login(
         @Body body: LoginUserRequestDto
-    ): Call<AuthInfoDto>
+    ): Observable<AuthInfoDto>
 
     @POST("auth/logout")
     fun logout()

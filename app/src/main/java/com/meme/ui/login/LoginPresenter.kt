@@ -61,6 +61,7 @@ class LoginPresenter(
         ed.putString(USER_DESCRIPTION_KEY, authInfoDto.userInfo.userDescription)
         ed.apply()
         isLoggedIn = true
+        moveToMainActivity()
     }
 
     private fun moveToMainActivity() {
@@ -72,6 +73,7 @@ class LoginPresenter(
         isLoggedIn = false
         activity.showError()
         t.printStackTrace()
+        activity.hideSpinnerOnButton(loginButton)
     }
 
     private fun onLoginButtonClicked(view: View) {
@@ -97,8 +99,6 @@ class LoginPresenter(
                     loginExtendedET.text.toString(),
                     passwordExtendedET.text.toString()
                 )
-                if(isLoggedIn)
-                    moveToMainActivity()
             }
         }
     }
