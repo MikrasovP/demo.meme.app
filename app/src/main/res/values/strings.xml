@@ -4,4 +4,6 @@
     <string name="login_label_password">Пароль</string>
     <string name="login_button">ВОЙТИ</string>
     <string name="empty_field_error">Поле не может быть пустым</string>
+    <string name="login_error">Во время запроса произошла ошибка, возможно вы неверно ввели логин/пароль</string>
+    <string name="password_length_tip">"Пароль должен содержать %d цифр"</string>
 </resources>
