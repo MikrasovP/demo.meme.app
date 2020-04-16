@@ -1,20 +1,18 @@
-package com.meme.model.service
+package com.meme.model.api
 
 import com.meme.model.dto.AuthInfoDto
 import com.meme.model.dto.LoginUserRequestDto
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
-import retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Query
 
-interface MemesApi {
+interface AuthApi {
     @POST("auth/login")
     fun login(
         @Body body: LoginUserRequestDto
     ): Observable<AuthInfoDto>
 
     @POST("auth/logout")
-    fun logout()
+    fun logout() : Completable
 }
