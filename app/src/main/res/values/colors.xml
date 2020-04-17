@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorSurfBackground">#23213F</color>
+    <color name="colorSurfBackgroundDarker">#12102B</color>
     <color name="colorSurfBackgroundLighter">#312F51</color>
     <color name="colorSurfAccent">#1EF0D7</color>
     <color name="colorSurfError">#FF575D</color>
