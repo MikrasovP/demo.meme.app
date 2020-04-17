@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorSurfBackgroundLighter"
         app:title="@string/toolbar_popular_memes"
-        app:titleTextColor="@color/colorWhite"
+        app:titleTextColor="@color/colorSurfText"
         app:menu="@menu/toolbar_search"
         />
 
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:backgroundTint="@color/colorSurfBackgroundDarker"
+        android:background="@color/colorSurfBackgroundDarker"
         app:itemIconTint="@color/color_nav_bar_ic"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
