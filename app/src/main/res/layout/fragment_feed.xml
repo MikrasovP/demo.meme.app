@@ -5,4 +5,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_feed">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/feed_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorSurfBackgroundLighter"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/toolbar_popular_memes"
+        app:titleTextColor="@color/colorSurfText"
+        app:menu="@menu/toolbar_search"
+        app:layout_constraintBottom_toTopOf="@id/feed_layout"
+        />
+
+    <FrameLayout
+        android:id="@+id/feed_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/feed_toolbar"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <include layout="@layout/meme_card"/>
+
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

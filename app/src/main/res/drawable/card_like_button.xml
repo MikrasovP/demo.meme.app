@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:exitFadeDuration="@android:integer/config_mediumAnimTime">
+
+    <item android:state_selected="false"
+        android:drawable="@drawable/ic_card_like_inactive" />
+
+    <item android:state_selected="true"
+        android:drawable="@drawable/ic_card_like_active"/>
+
+
+</selector>

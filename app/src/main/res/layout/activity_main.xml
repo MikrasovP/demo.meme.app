@@ -10,16 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorSurfBackgroundLighter"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="@string/toolbar_popular_memes"
-            app:titleTextColor="@color/colorSurfText"
-            app:menu="@menu/toolbar_search"
-            />
-
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
