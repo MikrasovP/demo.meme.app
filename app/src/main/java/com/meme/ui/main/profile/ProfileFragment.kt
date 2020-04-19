@@ -1,4 +1,4 @@
-package com.meme.ui.main.fragment
+package com.meme.ui.main.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
