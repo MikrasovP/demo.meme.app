@@ -1,8 +1,10 @@
 package com.meme.model.service
 
 import com.meme.model.api.AuthApi
+import com.meme.model.api.MemesApi
 import com.meme.model.dto.AuthInfoDto
 import com.meme.model.dto.LoginUserRequestDto
+import com.meme.model.dto.MemeDto
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
@@ -15,6 +17,7 @@ object MemesNetworkService {
     private var retrofit: Retrofit
     private const val BASE_URL = "https://demo2407529.mockable.io/"
     private var authApi: AuthApi
+    private var memesApi: MemesApi
 
     init {
         val interceptor = HttpLoggingInterceptor()
@@ -26,14 +29,15 @@ object MemesNetworkService {
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
-        authApi = retrofit.create(
-            AuthApi::class.java
-        )
+        authApi = retrofit.create(AuthApi::class.java)
+        memesApi = retrofit.create(MemesApi::class.java)
     }
 
     fun auth(requestDto: LoginUserRequestDto): Observable<AuthInfoDto> =
         authApi.login(requestDto)
 
-    fun logout() : Completable =
+    fun logout(): Completable =
         authApi.logout()
+
+    fun getMemes(): Observable<List<MemeDto>> = memesApi.memes()
 }
