@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.feed_toolbar))
 
         navBar.setOnNavigationItemSelectedListener(navBarListener)
 
@@ -27,14 +28,6 @@ class MainActivity : AppCompatActivity() {
                 FeedFragment()
             ).commit()
         }
-
-        val testCard = MemeCard(applicationContext)
-        testCard.memeDto = MemeDto(
-            0, "Test title", "Description test",
-            true, 1111,
-            "https://media.sproutsocial.com/uploads/meme-example.jpg"
-        )
-        fragmentContainer.addView(testCard)
 
     }
 
