@@ -9,7 +9,7 @@ data class MemeDto(
     var title: String,
     @SerializedName("description")
     var description: String,
-    @SerializedName("isFavourite")
+    @SerializedName("isFavorite")
     var isFavourite: Boolean,
     @SerializedName("createdDate")
     var createdDate: Long,

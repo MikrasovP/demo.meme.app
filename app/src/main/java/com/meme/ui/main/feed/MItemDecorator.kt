@@ -8,12 +8,12 @@ class MItemDecorator(private val spaceHeight: Int) : RecyclerView.ItemDecoration
     override fun getItemOffsets(outRect: Rect, view: View,
                                 parent: RecyclerView, state: RecyclerView.State) {
         with(outRect) {
-            if (parent.getChildAdapterPosition(view) == 0) {
-                top = spaceHeight
-            }
+            top = spaceHeight
             left =  spaceHeight
             right = spaceHeight
             bottom = spaceHeight
         }
     }
+
+
 }

@@ -2,7 +2,6 @@ package com.meme.ui.main.feed
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.meme.R
 import com.meme.model.dto.MemeDto
 
-class MemesAdapter() : RecyclerView.Adapter<MemesAdapter.MemesViewHolder>() {
+class MemesAdapter : RecyclerView.Adapter<MemesAdapter.MemesViewHolder>() {
 
     private var memes: List<MemeDto> = listOf()
 
@@ -37,10 +36,10 @@ class MemesAdapter() : RecyclerView.Adapter<MemesAdapter.MemesViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemesViewHolder {
-        // create a new view
+
         val memeCard = LayoutInflater.from(parent.context)
             .inflate(R.layout.meme_card, parent, false) as CardView
-        // set the view's size, margins, paddings and layout parameters
+
 
 
 
