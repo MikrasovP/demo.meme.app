@@ -23,9 +23,7 @@ class FeedPresenter(
             .subscribe({
                 fragment.showMemes(it)
             }, {
-                fragment.showLoadError(
-                    it
-                )
+                fragment.showLoadError(it)
             })
     }
 }
