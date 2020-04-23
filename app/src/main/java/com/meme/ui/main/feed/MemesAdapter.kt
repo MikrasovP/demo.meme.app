@@ -11,16 +11,19 @@ import com.bumptech.glide.Glide
 import com.meme.R
 import com.meme.model.dto.MemeDto
 
-class MemesAdapter : RecyclerView.Adapter<MemesAdapter.MemesViewHolder>() {
+class MemesAdapter(
+    private var onItemClickListener: (MemeDto) -> Unit
+) : RecyclerView.Adapter<MemesAdapter.MemesViewHolder>() {
 
     private var memes: List<MemeDto> = listOf()
 
     fun setData(data: List<MemeDto>) {
-        if(data == memes)
+        if (data == memes)
             return
         memes = data
         notifyDataSetChanged()
     }
+
 
     inner class MemesViewHolder(
         private val memeCard: CardView
@@ -29,7 +32,11 @@ class MemesAdapter : RecyclerView.Adapter<MemesAdapter.MemesViewHolder>() {
         private var titleTV: TextView = memeCard.findViewById(R.id.card_title)
         private var likeBtn: ImageButton = memeCard.findViewById(R.id.card_like_btn)
 
-        fun bind( position: Int){
+        init {
+            memeCard.setOnClickListener { onItemClickListener(memes[adapterPosition]) }
+        }
+
+        fun bind(position: Int) {
             this.titleTV.text = memes[position].title
             Glide.with(this.memeCard).load(memes[position].photoUrl).into(this.imageView)
             this.likeBtn.isSelected = memes[position].isFavourite
@@ -41,9 +48,6 @@ class MemesAdapter : RecyclerView.Adapter<MemesAdapter.MemesViewHolder>() {
 
         val memeCard = LayoutInflater.from(parent.context)
             .inflate(R.layout.meme_card, parent, false) as CardView
-
-
-
 
         return MemesViewHolder(memeCard)
     }

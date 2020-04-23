@@ -11,7 +11,7 @@ class FeedPresenter(
 
     private val memesRepo = MemesRepo
 
-    init {
+    fun onMemeClickListener(){
 
     }
 

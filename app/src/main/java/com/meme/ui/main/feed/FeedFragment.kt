@@ -1,6 +1,7 @@
 package com.meme.ui.main.feed
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,9 @@ class FeedFragment : Fragment() {
     private lateinit var memesProgressBar: ProgressBar
     private lateinit var loadErrorTV: TextView
     private lateinit var feedRefresher: SwipeRefreshLayout
-    private val adapter = MemesAdapter()
+    private val adapter = MemesAdapter {
+        meme -> showMemeFragment(meme)
+    }
 
     private val feedPresenter = FeedPresenter(this)
 
@@ -39,23 +42,23 @@ class FeedFragment : Fragment() {
         recyclerMemesView =
             view.findViewById<RecyclerView>(R.id.recycler_memes_view).apply {
 
-            adapter = this@FeedFragment.adapter
+                adapter = this@FeedFragment.adapter
 
-            val staggeredGridLayoutManager = StaggeredGridLayoutManager(
-                2,
-                StaggeredGridLayoutManager.VERTICAL
-            )
-            staggeredGridLayoutManager.gapStrategy =
-                StaggeredGridLayoutManager.GAP_HANDLING_NONE
+                val staggeredGridLayoutManager = StaggeredGridLayoutManager(
+                    2,
+                    StaggeredGridLayoutManager.VERTICAL
+                )
+                staggeredGridLayoutManager.gapStrategy =
+                    StaggeredGridLayoutManager.GAP_HANDLING_NONE
 
-            addItemDecoration(MItemDecorator(8))
+                addItemDecoration(MItemDecorator(8))
 
-            layoutManager = staggeredGridLayoutManager
+                layoutManager = staggeredGridLayoutManager
 
-            setPadding(8, 0, 8, 8)
+                setPadding(8, 0, 8, 8)
 
-            setHasFixedSize(true)
-        }
+                setHasFixedSize(true)
+            }
         memesProgressBar = view.findViewById(R.id.memes_progress_bar)
         loadErrorTV = view.findViewById(R.id.load_memes_errorTV)
 
@@ -84,11 +87,17 @@ class FeedFragment : Fragment() {
             feedRefresher,
             R.string.meme_reload_error,
             Snackbar.LENGTH_LONG
-        ).setBackgroundTint(ResourcesCompat.getColor(
-            resources,
-            R.color.colorSurfError,
-            requireContext().theme
-        )).show()
+        ).setBackgroundTint(
+            ResourcesCompat.getColor(
+                resources,
+                R.color.colorSurfError,
+                requireContext().theme
+            )
+        ).show()
+    }
+
+    private fun showMemeFragment(meme: MemeDto) {
+        Log.d("FeedFragment", "Click detected!!!! $meme")
     }
 
     fun showMemes(memes: List<MemeDto>) {
