@@ -57,7 +57,7 @@ class LoginPresenter(
     }
 
     fun onLoginTFChanged(newText: String, isError: Boolean) {
-        TODO("Phone num formatter is not implemented yet")
+        //TODO("Phone num formatter is not implemented yet")
     }
 
 }
