@@ -15,13 +15,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.feedToolbar))
+        setSupportActionBar(findViewById(R.id.feed_toolbar))
 
-        navBar.setOnNavigationItemSelectedListener(navBarListener)
+        nav_bar.setOnNavigationItemSelectedListener(navBarListener)
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().replace(
-                R.id.fragmentContainer,
+                R.id.fragment_container,
                 FeedFragment()
             ).commit()
         }

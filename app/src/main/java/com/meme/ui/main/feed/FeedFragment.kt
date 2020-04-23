@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -13,7 +14,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import com.meme.R
 import com.meme.model.dto.MemeDto
-import ru.surfstudio.android.easyadapter.EasyAdapter
 
 class FeedFragment : Fragment() {
 
@@ -23,9 +23,7 @@ class FeedFragment : Fragment() {
     private lateinit var feedRefresher: SwipeRefreshLayout
     private val adapter = MemesAdapter()
 
-    private val feedPresenter = FeedPresenter(
-        this
-    )
+    private val feedPresenter = FeedPresenter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +36,8 @@ class FeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerMemesView = view.findViewById<RecyclerView>(R.id.recyclerMemesView).apply {
+        recyclerMemesView =
+            view.findViewById<RecyclerView>(R.id.recycler_memes_view).apply {
 
             adapter = this@FeedFragment.adapter
 
@@ -57,8 +56,8 @@ class FeedFragment : Fragment() {
 
             setHasFixedSize(true)
         }
-        memesProgressBar = view.findViewById(R.id.memesProgressBar)
-        loadErrorTV = view.findViewById(R.id.loadMemesErrorTV)
+        memesProgressBar = view.findViewById(R.id.memes_progress_bar)
+        loadErrorTV = view.findViewById(R.id.load_memes_errorTV)
 
         feedRefresher = view.findViewById(R.id.feedRefresher)
         feedRefresher.setOnRefreshListener {
@@ -85,7 +84,11 @@ class FeedFragment : Fragment() {
             feedRefresher,
             R.string.meme_reload_error,
             Snackbar.LENGTH_LONG
-        ).show()
+        ).setBackgroundTint(ResourcesCompat.getColor(
+            resources,
+            R.color.colorSurfError,
+            requireContext().theme
+        )).show()
     }
 
     fun showMemes(memes: List<MemeDto>) {
