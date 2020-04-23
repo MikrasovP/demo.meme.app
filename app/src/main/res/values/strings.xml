@@ -13,4 +13,6 @@
     <string name="menu_adder_title">Adder</string>
     <string name="meme_load_error">Не удалось загрузить ленту \nОбновите экран или попробуйте позже.</string>
     <string name="meme_reload_error">Отсутствует интернет-соединение \nПопробуйте позже</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

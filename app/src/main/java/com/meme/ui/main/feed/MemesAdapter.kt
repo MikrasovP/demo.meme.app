@@ -33,13 +33,19 @@ class MemesAdapter(
         private var likeBtn: ImageButton = memeCard.findViewById(R.id.card_like_btn)
 
         init {
+            likeBtn.setOnClickListener {
+                FeedPresenter.onLikeBtnClickListener(
+                    it,
+                    memes[adapterPosition]
+                )
+            }
             memeCard.setOnClickListener { onItemClickListener(memes[adapterPosition]) }
         }
 
         fun bind(position: Int) {
-            this.titleTV.text = memes[position].title
-            Glide.with(this.memeCard).load(memes[position].photoUrl).into(this.imageView)
-            this.likeBtn.isSelected = memes[position].isFavourite
+            titleTV.text = memes[position].title
+            Glide.with(memeCard).load(memes[position].photoUrl).into(imageView)
+            likeBtn.isSelected = memes[position].isFavourite
         }
 
     }

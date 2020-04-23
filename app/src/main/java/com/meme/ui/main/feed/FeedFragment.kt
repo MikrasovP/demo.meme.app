@@ -23,7 +23,7 @@ class FeedFragment : Fragment() {
     private lateinit var loadErrorTV: TextView
     private lateinit var feedRefresher: SwipeRefreshLayout
     private val adapter = MemesAdapter {
-        meme -> showMemeFragment(meme)
+        showMemeFragment(it)
     }
 
     private val feedPresenter = FeedPresenter(this)
@@ -33,14 +33,11 @@ class FeedFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_feed, container, false)
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        val rootView = inflater.inflate(R.layout.fragment_feed, container, false)
 
         recyclerMemesView =
-            view.findViewById<RecyclerView>(R.id.recycler_memes_view).apply {
+            rootView.findViewById<RecyclerView>(R.id.recycler_memes_view).apply {
 
                 adapter = this@FeedFragment.adapter
 
@@ -59,10 +56,10 @@ class FeedFragment : Fragment() {
 
                 setHasFixedSize(true)
             }
-        memesProgressBar = view.findViewById(R.id.memes_progress_bar)
-        loadErrorTV = view.findViewById(R.id.load_memes_errorTV)
+        memesProgressBar = rootView.findViewById(R.id.memes_progress_bar)
+        loadErrorTV = rootView.findViewById(R.id.load_memes_errorTV)
 
-        feedRefresher = view.findViewById(R.id.feedRefresher)
+        feedRefresher = rootView.findViewById(R.id.feedRefresher)
         feedRefresher.setOnRefreshListener {
             feedPresenter.refreshMemes()
             feedRefresher.isRefreshing = false
@@ -72,7 +69,10 @@ class FeedFragment : Fragment() {
         )
 
         feedPresenter.getMemes()
+
+        return rootView
     }
+
 
     fun showLoadError(error: Throwable) {
         loadErrorTV.visibility = View.VISIBLE

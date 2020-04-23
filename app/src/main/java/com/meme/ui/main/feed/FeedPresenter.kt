@@ -1,5 +1,6 @@
 package com.meme.ui.main.feed
 
+import android.view.View
 import com.meme.model.dto.MemeDto
 import com.meme.model.repo.MemesRepo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -10,6 +11,13 @@ class FeedPresenter(
 ) {
 
     private val memesRepo = MemesRepo
+
+    companion object{
+        fun onLikeBtnClickListener(view: View, meme: MemeDto){
+            meme.isFavourite = !meme.isFavourite
+            view.isSelected = !view.isSelected
+        }
+    }
 
     fun onMemeClickListener(){
 

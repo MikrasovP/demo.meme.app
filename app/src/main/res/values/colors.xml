@@ -9,6 +9,7 @@
     <color name="colorSurfAccent">#1EF0D7</color>
     <color name="colorSurfError">#FF575D</color>
     <color name="colorSurfText">#FFFFFF</color>
+    <color name="colorSurfTextSecondary">#CCFFFFFF</color>
     <color name="colorSurfTertiary">#61FFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorSurfAccentDark">#1F2032</color>
