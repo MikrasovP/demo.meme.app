@@ -1,6 +1,5 @@
 package com.meme.ui.main.feed
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -17,7 +16,8 @@ import java.util.*
 class MemeDetailActivity : AppCompatActivity() {
 
     private lateinit var meme: MemeDto
-    private lateinit var toolbar: Toolbar
+    private lateinit var toolbarTitleTv: TextView
+    private lateinit var toolbarCloseBtn: ImageButton
     private lateinit var titleTv: TextView
     private lateinit var memePic: ImageView
     private lateinit var creationTimeTV: TextView
@@ -26,18 +26,22 @@ class MemeDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_meme_details)
+        setContentView(R.layout.activity_meme_details)
 
         meme = intent.getSerializableExtra("meme") as MemeDto
 
-        toolbar = findViewById(R.id.meme_toolbar)
+        toolbarTitleTv = findViewById(R.id.meme_toolbar_title)
+        toolbarCloseBtn = findViewById(R.id.meme_close_btn)
         titleTv = findViewById(R.id.meme_title_tv)
         memePic = findViewById(R.id.meme_pic)
         creationTimeTV = findViewById(R.id.meme_creation_time_tv)
         likeBtn = findViewById(R.id.meme_detail_like_btn)
         descriptionTV = findViewById(R.id.meme_description)
 
-        toolbar.title = meme.title
+        toolbarTitleTv.text = meme.title
+        toolbarCloseBtn.setOnClickListener {
+            this.finish()
+        }
         titleTv.text = meme.title
         Glide.with(this).load(meme.photoUrl).into(memePic)
         creationTimeTV.text = Date(meme.createdDate).toString()
