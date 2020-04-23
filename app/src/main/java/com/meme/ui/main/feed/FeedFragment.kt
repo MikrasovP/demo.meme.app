@@ -1,7 +1,7 @@
 package com.meme.ui.main.feed
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +15,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import com.meme.R
 import com.meme.model.dto.MemeDto
+
 
 class FeedFragment : Fragment() {
 
@@ -97,7 +98,9 @@ class FeedFragment : Fragment() {
     }
 
     private fun showMemeFragment(meme: MemeDto) {
-        Log.d("FeedFragment", "Click detected!!!! $meme")
+        val intent = Intent(activity, MemeDetailActivity::class.java)
+            .putExtra("meme", meme)
+        activity?.startActivity(intent)
     }
 
     fun showMemes(memes: List<MemeDto>) {

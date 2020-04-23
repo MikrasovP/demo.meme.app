@@ -23,6 +23,7 @@
         <activity android:name=".ui.main.MainActivity"
             android:windowSoftInputMode="stateVisible|adjustResize"
             android:theme="@style/SurfTheme.ActionBar"/>
+        <activity android:name=".ui.main.feed.MemeDetailActivity"/>
     </application>
 
 </manifest>
