@@ -12,4 +12,5 @@
     <string name="menu_profile_title">Profile</string>
     <string name="menu_adder_title">Adder</string>
     <string name="meme_load_error">Не удалось загрузить ленту \n Обновите экран или попробуйте позже.</string>
+    <string name="meme_reload_error">Отсутствует интернет-соединение \n Попробуйте позже</string>
 </resources>

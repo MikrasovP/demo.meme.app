@@ -16,6 +16,8 @@ class MemesAdapter : RecyclerView.Adapter<MemesAdapter.MemesViewHolder>() {
     private var memes: List<MemeDto> = listOf()
 
     fun setData(data: List<MemeDto>) {
+        if(data == memes)
+            return
         memes = data
         notifyDataSetChanged()
     }

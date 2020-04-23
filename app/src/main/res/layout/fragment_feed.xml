@@ -9,7 +9,7 @@
     android:theme="@style/SurfTheme.ActionBar">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/feed_toolbar"
+        android:id="@+id/feedToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorSurfBackgroundLighter"
@@ -20,17 +20,26 @@
         app:title="@string/toolbar_popular_memes"
         app:titleTextColor="@color/colorSurfText" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerMemesView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/feedRefresher"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feed_toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/feedToolbar">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerMemesView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/feedToolbar" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <TextView
         android:id="@+id/loadMemesErrorTV"
@@ -43,7 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/feed_toolbar" />
+        app:layout_constraintTop_toTopOf="@+id/feedToolbar" />
 
     <ProgressBar
         android:id="@+id/memesProgressBar"
@@ -55,6 +64,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/feed_toolbar" />
+        app:layout_constraintTop_toTopOf="@+id/feedToolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

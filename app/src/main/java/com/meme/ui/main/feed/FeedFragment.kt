@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.snackbar.Snackbar
 import com.meme.R
 import com.meme.model.dto.MemeDto
 import ru.surfstudio.android.easyadapter.EasyAdapter
@@ -18,6 +20,7 @@ class FeedFragment : Fragment() {
     private lateinit var recyclerMemesView: RecyclerView
     private lateinit var memesProgressBar: ProgressBar
     private lateinit var loadErrorTV: TextView
+    private lateinit var feedRefresher: SwipeRefreshLayout
     private val adapter = MemesAdapter()
 
     private val feedPresenter = FeedPresenter(
@@ -57,6 +60,14 @@ class FeedFragment : Fragment() {
         memesProgressBar = view.findViewById(R.id.memesProgressBar)
         loadErrorTV = view.findViewById(R.id.loadMemesErrorTV)
 
+        feedRefresher = view.findViewById(R.id.feedRefresher)
+        feedRefresher.setOnRefreshListener {
+            feedPresenter.refreshMemes()
+            feedRefresher.isRefreshing = false
+        }
+        feedRefresher.setColorSchemeResources(
+            R.color.colorSurfBackgroundLighter
+        )
 
         feedPresenter.getMemes()
     }
@@ -69,12 +80,17 @@ class FeedFragment : Fragment() {
         memesProgressBar.visibility = View.VISIBLE
     }
 
-    fun showReloadError() {
-
+    fun showReloadError(error: Throwable) {
+        Snackbar.make(
+            feedRefresher,
+            R.string.meme_reload_error,
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 
     fun showMemes(memes: List<MemeDto>) {
         memesProgressBar.visibility = View.INVISIBLE
+        loadErrorTV.visibility = View.INVISIBLE
 
         adapter.setData(memes)
 
