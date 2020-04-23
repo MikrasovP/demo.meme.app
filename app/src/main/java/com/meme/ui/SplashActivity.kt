@@ -18,6 +18,7 @@ class SplashActivity : AppCompatActivity() {
     private fun moveToNextActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
 }

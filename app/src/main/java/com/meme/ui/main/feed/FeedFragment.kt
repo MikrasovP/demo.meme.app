@@ -74,6 +74,10 @@ class FeedFragment : Fragment() {
         return rootView
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+    }
 
     fun showLoadError(error: Throwable) {
         loadErrorTV.visibility = View.VISIBLE

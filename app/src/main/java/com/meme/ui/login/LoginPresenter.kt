@@ -33,6 +33,7 @@ class LoginPresenter(
     private fun moveToMainActivity() {
         val intent = Intent(activity, MainActivity::class.java)
         activity.startActivity(intent)
+        activity.finish()
     }
 
     private fun onErrorResponse(t: Throwable) {
