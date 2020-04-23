@@ -15,6 +15,17 @@ class FeedPresenter(
 
     }
 
+    fun refreshMemes() {
+        memesRepo.getMemes()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                fragment.showMemes(it)
+            }, {
+                fragment.showReloadError(it)
+            })
+    }
+
     fun getMemes() {
         fragment.showProgressBar()
         memesRepo.getMemes()
@@ -23,9 +34,7 @@ class FeedPresenter(
             .subscribe({
                 fragment.showMemes(it)
             }, {
-                fragment.showLoadError(
-                    it
-                )
+                fragment.showLoadError(it)
             })
     }
 }

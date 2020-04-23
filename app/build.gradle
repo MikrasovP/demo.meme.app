@@ -31,6 +31,8 @@ android {
 }
 
 dependencies {
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation 'ru.surfstudio.android:easyadapter:1.0.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.pixplicity.easyprefs:library:1.9.0'

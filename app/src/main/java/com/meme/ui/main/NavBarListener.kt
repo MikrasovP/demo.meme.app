@@ -21,7 +21,7 @@ class NavBarListener(private val fragmentManager: FragmentManager) : BottomNavig
             else -> return false
         }
 
-        fragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit()
+        fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
         return true
     }
 }
