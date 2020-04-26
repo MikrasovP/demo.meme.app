@@ -13,4 +13,8 @@
     <string name="menu_adder_title">Adder</string>
     <string name="meme_load_error">Не удалось загрузить ленту \nОбновите экран или попробуйте позже.</string>
     <string name="meme_reload_error">Отсутствует интернет-соединение \nПопробуйте позже</string>
+    <string name="added_add">СОЗДАТЬ</string>
+    <string name="adder_title">Создать свой мем</string>
+    <string name="adder_header_tint">Заголовок</string>
+    <string name="adder_text_tint">Текст</string>
 </resources>

@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/SurfTheme.ActionBar"
+    android:theme="@style/SurfTheme.ActionBar.NavView"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/SurfTheme.ActionBar">
+        android:theme="@style/SurfTheme.ActionBar.NavView">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/meme_toolbar"
@@ -33,7 +33,7 @@
                     android:id="@+id/meme_close_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_meme_close"
+                    android:src="@drawable/ic_close"
                     android:backgroundTint="@color/colorSurfBackgroundLighter"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>

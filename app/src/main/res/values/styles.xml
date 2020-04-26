@@ -16,8 +16,14 @@
 
     <style name="SurfTheme.ActionBar" parent="SurfTheme">
         <item name="android:windowActionBar">true</item>
-        <item name="android:navigationBarColor">@color/colorSurfBackgroundDarker</item>
+        <item name="android:windowBackground">@color/colorSurfBackground</item>
+        <item name="android:navigationBarColor">@color/colorSurfBackground</item>
         <item name="android:statusBarColor">@color/colorSurfBackgroundLighter</item>
+    </style>
+
+    <style name="SurfTheme.ActionBar.NavView" parent="SurfTheme.ActionBar">
+        <item name="android:windowActionBar">true</item>
+        <item name="android:navigationBarColor">@color/colorSurfBackgroundDarker</item>
     </style>
 
     <style name="SurfTheme.ActionBar.Lighter" parent="SurfTheme.ActionBar">

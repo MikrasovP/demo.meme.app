@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    android:theme="@style/SurfTheme.ActionBar">
+    android:theme="@style/SurfTheme.ActionBar.NavView">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/feed_toolbar"

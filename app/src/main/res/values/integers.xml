@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="password_length">8</integer>
+    <integer name="adder_header_max_char">140</integer>
+    <integer name="adder_text_max_char">1000</integer>
 </resources>
