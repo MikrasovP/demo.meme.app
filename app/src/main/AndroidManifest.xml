@@ -26,6 +26,8 @@
             android:theme="@style/SurfTheme.ActionBar"/>
         <activity android:name=".ui.main.feed.MemeDetailActivity"
             android:theme="@style/SurfTheme.ActionBar.Lighter"/>
+        <activity android:name=".ui.main.adder.AdderActivity"
+            android:theme="@style/SurfTheme"/>
     </application>
 
 </manifest>
