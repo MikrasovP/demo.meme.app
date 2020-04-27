@@ -20,7 +20,7 @@
         app:titleTextColor="@color/colorSurfText" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/feedRefresher"
+        android:id="@+id/feed_refresher"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:paddingTop="16dp"
+            android:clipToPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +42,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <TextView
-        android:id="@+id/load_memes_errorTV"
+        android:id="@+id/load_memes_error_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/meme_load_error"

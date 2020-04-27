@@ -11,9 +11,7 @@
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/nav_bar"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_bar"

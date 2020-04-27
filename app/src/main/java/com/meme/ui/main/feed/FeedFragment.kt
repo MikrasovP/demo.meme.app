@@ -5,26 +5,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import com.meme.R
 import com.meme.model.dto.MemeDto
-
+import kotlinx.android.synthetic.main.fragment_feed.*
 
 class FeedFragment : Fragment() {
 
-    private lateinit var recyclerMemesView: RecyclerView
-    private lateinit var memesProgressBar: ProgressBar
-    private lateinit var loadErrorTV: TextView
-    private lateinit var feedRefresher: SwipeRefreshLayout
+    companion object {
+        private const val RECYCLER_COLUMN_SPAN = 2
+    }
+
     private val adapter = MemesAdapter {
-        showMemeFragment(it)
+        showMemeDetailActivity(it)
     }
 
     private val feedPresenter = FeedPresenter(this)
@@ -34,44 +30,42 @@ class FeedFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        return inflater.inflate(R.layout.fragment_feed, container, false)
+    }
 
-        val rootView = inflater.inflate(R.layout.fragment_feed, container, false)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
-        recyclerMemesView =
-            rootView.findViewById<RecyclerView>(R.id.recycler_memes_view).apply {
+        recycler_memes_view.apply {
 
-                adapter = this@FeedFragment.adapter
+            adapter = this@FeedFragment.adapter
 
-                val staggeredGridLayoutManager = StaggeredGridLayoutManager(
-                    2,
-                    StaggeredGridLayoutManager.VERTICAL
-                )
-                staggeredGridLayoutManager.gapStrategy =
-                    StaggeredGridLayoutManager.GAP_HANDLING_NONE
+            val staggeredGridLayoutManager = StaggeredGridLayoutManager(
+                RECYCLER_COLUMN_SPAN,
+                StaggeredGridLayoutManager.VERTICAL
+            )
+            staggeredGridLayoutManager.gapStrategy =
+                StaggeredGridLayoutManager.GAP_HANDLING_NONE
 
-                addItemDecoration(MItemDecorator(8))
+            addItemDecoration(MItemDecorator(8))
 
-                layoutManager = staggeredGridLayoutManager
+            layoutManager = staggeredGridLayoutManager
 
-                setPadding(8, 0, 8, 8)
+            setPadding(8, 0, 8, 8)
 
-                setHasFixedSize(true)
-            }
-        memesProgressBar = rootView.findViewById(R.id.memes_progress_bar)
-        loadErrorTV = rootView.findViewById(R.id.load_memes_errorTV)
-
-        feedRefresher = rootView.findViewById(R.id.feedRefresher)
-        feedRefresher.setOnRefreshListener {
-            feedPresenter.refreshMemes()
-            feedRefresher.isRefreshing = false
+            setHasFixedSize(true)
         }
-        feedRefresher.setColorSchemeResources(
+
+
+        feed_refresher.setOnRefreshListener {
+            feedPresenter.refreshMemes()
+            feed_refresher.isRefreshing = false
+        }
+        feed_refresher.setColorSchemeResources(
             R.color.colorSurfBackgroundLighter
         )
 
         feedPresenter.getMemes()
-
-        return rootView
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,16 +74,16 @@ class FeedFragment : Fragment() {
     }
 
     fun showLoadError(error: Throwable) {
-        loadErrorTV.visibility = View.VISIBLE
+        load_memes_error_tv.visibility = View.VISIBLE
     }
 
     fun showProgressBar() {
-        memesProgressBar.visibility = View.VISIBLE
+        memes_progress_bar.visibility = View.VISIBLE
     }
 
     fun showReloadError(error: Throwable) {
         Snackbar.make(
-            feedRefresher,
+            feed_refresher,
             R.string.meme_reload_error,
             Snackbar.LENGTH_LONG
         ).setBackgroundTint(
@@ -101,18 +95,17 @@ class FeedFragment : Fragment() {
         ).show()
     }
 
-    private fun showMemeFragment(meme: MemeDto) {
+    private fun showMemeDetailActivity(meme: MemeDto) {
         val intent = Intent(activity, MemeDetailActivity::class.java)
             .putExtra("meme", meme)
         activity?.startActivity(intent)
     }
 
     fun showMemes(memes: List<MemeDto>) {
-        memesProgressBar.visibility = View.INVISIBLE
-        loadErrorTV.visibility = View.INVISIBLE
+        memes_progress_bar.visibility = View.INVISIBLE
+        load_memes_error_tv.visibility = View.INVISIBLE
 
         adapter.setData(memes)
-
     }
 
 }
