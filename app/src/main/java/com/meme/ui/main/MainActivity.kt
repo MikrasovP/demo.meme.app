@@ -2,17 +2,14 @@ package com.meme.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.meme.R
 import com.meme.ui.main.adder.AdderActivity
 import com.meme.ui.main.feed.FeedFragment
 import com.meme.ui.main.profile.ProfileFragment
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.feed_toolbar))
         bottomNavView = findViewById(R.id.nav_bar)
 
         if (savedInstanceState == null) {

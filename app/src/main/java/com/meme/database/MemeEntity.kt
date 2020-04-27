@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "MemeEntity")
 data class MemeEntity(
-    @PrimaryKey
-    var id: Long,
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0,
     var title: String,
     var description: String,
     var isFavourite: Boolean,

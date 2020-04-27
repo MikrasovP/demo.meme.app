@@ -7,13 +7,11 @@ import com.meme.database.AppDatabase
 
 class App : Application() {
 
-    companion object{
+    companion object {
 
         lateinit var appInstance: App
+            private set
 
-        fun getInstance(): App {
-            return appInstance
-        }
     }
 
     private lateinit var database: AppDatabase
@@ -22,7 +20,10 @@ class App : Application() {
         super.onCreate()
         appInstance = this
         database = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database")
+            .fallbackToDestructiveMigration()
             .build()
+
+        PrefsEditor.build(applicationContext, "com.meme")
     }
 
     fun getDatabase(): AppDatabase {

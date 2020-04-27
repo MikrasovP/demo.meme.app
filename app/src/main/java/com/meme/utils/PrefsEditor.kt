@@ -13,6 +13,9 @@ object PrefsEditor {
     private const val LAST_NAME_KEY = "lastName"
     private const val USER_DESCRIPTION_KEY = "userDescription"
 
+    /**
+     * This method should be invoked after application start (in App class, for example)
+     */
     fun build(context: Context, packageName: String){
         Prefs.Builder()
             .setContext(context)

@@ -15,6 +15,7 @@
     <string name="meme_reload_error">Отсутствует интернет-соединение \nПопробуйте позже</string>
     <string name="added_add">СОЗДАТЬ</string>
     <string name="adder_title">Создать свой мем</string>
-    <string name="adder_header_tint">Заголовок</string>
-    <string name="adder_text_tint">Текст</string>
+    <string name="adder_header_hint">Заголовок</string>
+    <string name="adder_main_hint">Текст</string>
+    <string name="adder_excess_error">Слишком много!</string>
 </resources>
