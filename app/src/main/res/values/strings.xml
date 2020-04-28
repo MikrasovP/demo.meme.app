@@ -4,4 +4,13 @@
     <string name="login_label_password">Пароль</string>
     <string name="login_button">ВОЙТИ</string>
     <string name="empty_field_error">Поле не может быть пустым</string>
+    <string name="login_error">Во время запроса произошла ошибка, возможно вы неверно ввели логин/пароль</string>
+    <string name="password_length_tip">"Пароль должен содержать %d цифр"</string>
+    <string name="toolbar_popular_memes">Популярные мемы</string>
+    <string name="toolbar_search_hint">Поиск</string>
+    <string name="menu_feed_title">Feed</string>
+    <string name="menu_profile_title">Profile</string>
+    <string name="menu_adder_title">Adder</string>
+    <string name="meme_load_error">Не удалось загрузить ленту \nОбновите экран или попробуйте позже.</string>
+    <string name="meme_reload_error">Отсутствует интернет-соединение \nПопробуйте позже</string>
 </resources>
