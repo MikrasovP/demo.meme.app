@@ -24,14 +24,14 @@
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".ui.main.MainActivity"
-            android:theme="@style/SurfTheme.ActionBar.NavView"
+            android:theme="@style/SurfTheme.LightStatusBar.DarkNavBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.main.feed.MemeDetailActivity"
-            android:theme="@style/SurfTheme.ActionBar.Lighter" />
+            android:theme="@style/SurfTheme.LightStatusBar.LightBackground.LightNavBar" />
         <activity
             android:name=".ui.main.adder.AdderActivity"
-            android:theme="@style/SurfTheme.ActionBar"
+            android:theme="@style/SurfTheme.LightStatusBar"
             android:windowSoftInputMode="adjustResize" />
     </application>
 

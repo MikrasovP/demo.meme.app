@@ -14,25 +14,32 @@
         <item name="android:textColorTertiary">@color/colorSurfTertiary</item>
     </style>
 
-    <style name="SurfTheme.ActionBar" parent="SurfTheme">
+    <style name="SurfTheme.LightStatusBar" parent="SurfTheme">
         <item name="android:windowActionBar">true</item>
-        <item name="android:windowBackground">@color/colorSurfBackground</item>
-        <item name="android:navigationBarColor">@color/colorSurfBackground</item>
         <item name="android:statusBarColor">@color/colorSurfBackgroundLighter</item>
     </style>
 
-    <style name="SurfTheme.ActionBar.NavView" parent="SurfTheme.ActionBar">
-        <item name="android:windowActionBar">true</item>
+    <style name="SurfTheme.LightStatusBar.DarkNavBar" parent="SurfTheme.LightStatusBar">
         <item name="android:navigationBarColor">@color/colorSurfBackgroundDarker</item>
     </style>
 
-    <style name="SurfTheme.ActionBar.Lighter" parent="SurfTheme.ActionBar">
+    <style name="SurfTheme.LightStatusBar.LightBackground.LightNavBar" parent="SurfTheme.LightStatusBar">
         <item name="android:windowBackground">@color/colorSurfBackgroundLighter</item>
         <item name="android:navigationBarColor">@color/colorSurfBackgroundLighter</item>
     </style>
 
     <style name="SurfTheme.DarkAccent" parent="SurfTheme">
         <item name="colorAccent">@color/colorSurfAccentDark</item>
+    </style>
+
+    <style name="SurfTheme.CustomActionBar" parent="SurfTheme">
+        <item name="android:background">@color/colorSurfBackgroundLighter</item>
+        <item name="android:textColorSecondary">@color/colorSurfAccent</item>
+    </style>
+    
+    <style name="ThemeOverlay.SurfTheme" parent="Theme.AppCompat">
+        <item name="android:colorBackground">@color/colorSurfBackgroundLighter</item>
+        <item name="android:textColor">@color/colorSurfText</item>
     </style>
 
 </resources>
