@@ -2,6 +2,7 @@ package com.meme.utils
 
 import android.content.Context
 import android.content.ContextWrapper
+import com.meme.model.UserInfo
 import com.meme.model.dto.AuthInfoDto
 import com.pixplicity.easyprefs.library.Prefs
 
@@ -33,4 +34,12 @@ object PrefsEditor {
         Prefs.putString(LAST_NAME_KEY, authInfoDto.userInfo.lastName)
         Prefs.putString(USER_DESCRIPTION_KEY, authInfoDto.userInfo.userDescription)
     }
+
+    fun getUser() : UserInfo = UserInfo(
+        id = Prefs.getInt(USER_ID_KEY, -1),
+        username = Prefs.getString(USERNAME_KEY, ""),
+        firstName = Prefs.getString(FIRST_NAME_KEY, ""),
+        lastName = Prefs.getString(LAST_NAME_KEY, ""),
+        userDescription = Prefs.getString(USER_DESCRIPTION_KEY, "")
+    )
 }
