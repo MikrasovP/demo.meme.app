@@ -14,7 +14,7 @@
         <item name="android:textColorTertiary">@color/colorSurfTertiary</item>
     </style>
 
-    <style name="SurfTheme.ActionBar" parent="SurfTheme">
+    <style name="SurfTheme.LightStatusBar.DarkNavBar" parent="SurfTheme">
         <item name="android:windowActionBar">true</item>
         <item name="android:navigationBarColor">@color/colorSurfBackgroundDarker</item>
         <item name="android:statusBarColor">@color/colorSurfBackgroundLighter</item>

@@ -14,10 +14,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object MemesNetworkService {
-    private var retrofit: Retrofit
     private const val BASE_URL = "https://demo2407529.mockable.io/"
-    private var authApi: AuthApi
-    private var memesApi: MemesApi
+
+    private val retrofit: Retrofit
+    private val authApi: AuthApi
+    private val memesApi: MemesApi
 
     init {
         val interceptor = HttpLoggingInterceptor()

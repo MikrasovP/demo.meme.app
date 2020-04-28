@@ -1,6 +1,7 @@
 package com.meme.ui.login
 
 import android.content.Intent
+import com.meme.R
 import com.meme.model.dto.AuthInfoDto
 import com.meme.model.repo.MemesRepo
 import com.meme.ui.main.MainActivity
@@ -44,7 +45,8 @@ class LoginPresenter(
 
     fun onLoginButtonClicked(login: String, password: String) {
         when {
-            password.length != 8 -> {
+            password.length !=
+                    activity.resources.getInteger(R.integer.password_length) -> {
                 activity.showPasswordTFError()
             }
             login.isEmpty() -> {

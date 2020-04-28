@@ -22,7 +22,7 @@
             android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity android:name=".ui.main.MainActivity"
             android:windowSoftInputMode="stateVisible|adjustResize"
-            android:theme="@style/SurfTheme.ActionBar"/>
+            android:theme="@style/SurfTheme.LightStatusBar.DarkNavBar"/>
         <activity android:name=".ui.main.feed.MemeDetailActivity"/>
     </application>
 
