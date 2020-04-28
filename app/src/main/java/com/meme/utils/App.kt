@@ -2,16 +2,13 @@ package com.meme.utils
 
 import android.app.Application
 import androidx.room.Room
-import com.meme.database.AppDatabase
-
+import com.meme.model.database.AppDatabase
 
 class App : Application() {
 
     companion object {
-
         lateinit var appInstance: App
             private set
-
     }
 
     private lateinit var database: AppDatabase

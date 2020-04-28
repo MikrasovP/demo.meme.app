@@ -1,4 +1,4 @@
-package com.meme.ui.main.feed
+package com.meme.ui.main.recycler
 
 import android.graphics.Rect
 import android.view.View

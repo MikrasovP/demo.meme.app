@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.meme.R
 import com.meme.model.dto.MemeDto
+import com.meme.ui.main.recycler.MItemDecorator
+import com.meme.ui.main.recycler.MemesAdapter
 import kotlinx.android.synthetic.main.fragment_feed.*
 
 class FeedFragment : Fragment() {
@@ -35,7 +37,12 @@ class FeedFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        retainInstance = true
 
+        initRecycler()
+    }
+
+    private fun initRecycler(){
         recycler_memes_view.apply {
 
             adapter = this@FeedFragment.adapter
@@ -66,11 +73,6 @@ class FeedFragment : Fragment() {
         )
 
         feedPresenter.getMemes()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
     }
 
     fun showLoadError(error: Throwable) {

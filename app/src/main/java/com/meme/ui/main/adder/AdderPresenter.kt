@@ -2,9 +2,9 @@ package com.meme.ui.main.adder
 
 import android.text.Editable
 import com.meme.R
-import com.meme.database.MemeEntity
-import com.meme.utils.App
-import io.reactivex.rxjava3.core.Observable
+import com.meme.model.dto.MemeDto
+import com.meme.model.repo.DatabaseRepo
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
 
@@ -48,23 +48,18 @@ class AdderPresenter(
     }
 
     fun onAddBtnClicked(){
-        val db = App.appInstance.getDatabase()
-
-        Observable.just{
-            db.memeDao().insert(MemeEntity(
-                title = activity.getHeaderText(),
-                description = activity.getMainText(),
-                isFavourite = false,
-                photoUrl = pictureUrl,
-                createdDate = Calendar.getInstance().timeInMillis
-            ))
-        }.subscribeOn(Schedulers.io())
-            .observeOn(Schedulers.io())
+        DatabaseRepo.insert(MemeDto(
+            title = activity.getHeaderText(),
+            description = activity.getMainText(),
+            isFavourite = false,
+            photoUrl = pictureUrl,
+            createdDate = Calendar.getInstance().timeInMillis
+        ))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe{
-                it.invoke()
+                activity.finish()
             }
-
-        activity.finish()
     }
 
     /**

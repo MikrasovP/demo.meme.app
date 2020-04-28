@@ -1,4 +1,4 @@
-package com.meme.database
+package com.meme.model.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

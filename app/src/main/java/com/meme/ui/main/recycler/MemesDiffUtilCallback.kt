@@ -1,4 +1,4 @@
-package com.meme.ui.main.feed
+package com.meme.ui.main.recycler
 
 import androidx.recyclerview.widget.DiffUtil
 import com.meme.model.dto.MemeDto

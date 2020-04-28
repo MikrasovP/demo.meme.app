@@ -5,7 +5,7 @@ import java.io.Serializable
 
 data class MemeDto(
     @SerializedName("id")
-    var id: Long,
+    var id: Long = 0,
     @SerializedName("title")
     var title: String,
     @SerializedName("description")

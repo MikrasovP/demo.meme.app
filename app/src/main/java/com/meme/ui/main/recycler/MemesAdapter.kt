@@ -1,6 +1,7 @@
-package com.meme.ui.main.feed
+package com.meme.ui.main.recycler
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -41,7 +42,7 @@ class MemesAdapter(
 
         init {
             likeBtn.setOnClickListener {
-                FeedPresenter.onLikeBtnClickListener(
+                onLikeBtnClickListener(
                     it,
                     memes[adapterPosition]
                 )
@@ -53,6 +54,11 @@ class MemesAdapter(
             titleTV.text = memes[position].title
             Glide.with(memeCard).load(memes[position].photoUrl).into(imageView)
             likeBtn.isSelected = memes[position].isFavourite
+        }
+
+        private fun onLikeBtnClickListener(view: View, meme: MemeDto){
+            meme.isFavourite = !meme.isFavourite
+            view.isSelected = !view.isSelected
         }
 
     }
