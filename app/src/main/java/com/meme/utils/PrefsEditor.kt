@@ -42,4 +42,13 @@ object PrefsEditor {
         lastName = Prefs.getString(LAST_NAME_KEY, ""),
         userDescription = Prefs.getString(USER_DESCRIPTION_KEY, "")
     )
+
+    fun removeUser(){
+        Prefs.remove(TOKEN_KEY)
+        Prefs.remove(USER_ID_KEY)
+        Prefs.remove(USERNAME_KEY)
+        Prefs.remove(FIRST_NAME_KEY)
+        Prefs.remove(LAST_NAME_KEY)
+        Prefs.remove(USER_DESCRIPTION_KEY)
+    }
 }

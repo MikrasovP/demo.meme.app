@@ -3,7 +3,7 @@ package com.meme.ui.login
 import android.content.Intent
 import com.meme.R
 import com.meme.model.dto.AuthInfoDto
-import com.meme.model.repo.MemesRepo
+import com.meme.model.repo.MemesNetRepo
 import com.meme.ui.main.MainActivity
 import com.meme.utils.PrefsEditor
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -13,7 +13,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class LoginPresenter(
     private val activity: LoginActivity
 ) {
-    private val authRepo = MemesRepo
+    private val authRepo = MemesNetRepo
 
     private fun auth(login: String, password: String) {
         authRepo.auth(login, password)

@@ -2,7 +2,7 @@ package com.meme.ui.main.feed
 
 import android.view.View
 import com.meme.model.dto.MemeDto
-import com.meme.model.repo.MemesRepo
+import com.meme.model.repo.MemesNetRepo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -10,7 +10,7 @@ class FeedPresenter(
     private val fragment: FeedFragment
 ) {
 
-    private val memesRepo = MemesRepo
+    private val memesRepo = MemesNetRepo
 
     companion object{
         fun onLikeBtnClickListener(view: View, meme: MemeDto){

@@ -39,6 +39,7 @@
     
     <style name="ThemeOverlay.SurfTheme" parent="Theme.AppCompat">
         <item name="android:colorBackground">@color/colorSurfBackgroundLighter</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
         <item name="android:textColor">@color/colorSurfText</item>
     </style>
 

@@ -21,4 +21,7 @@
     <string name="menu_about">О приложении</string>
     <string name="menu_exit">Выйти</string>
     <string name="profile_title">Профиль</string>
+    <string name="dialog_title">Действительно хотите выйти?</string>
+    <string name="dialog_quit">Выйти</string>
+    <string name="dialog_cancel">Отмена</string>
 </resources>

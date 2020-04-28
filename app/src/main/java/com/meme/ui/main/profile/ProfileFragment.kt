@@ -6,13 +6,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.meme.R
 import com.meme.model.UserInfo
 import com.meme.model.dto.MemeDto
-import com.meme.ui.main.recycler.MItemDecorator
+import com.meme.ui.login.LoginActivity
 import com.meme.ui.main.feed.MemeDetailActivity
+import com.meme.ui.main.recycler.MItemDecorator
 import com.meme.ui.main.recycler.MemesAdapter
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -42,9 +45,24 @@ class ProfileFragment : Fragment() {
         presenter.onActivityCreated()
 
         initRecycler()
+
+        profile_toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.profile_menu_exit -> {
+                    presenter.onLogoutClick()
+                    true
+                }
+                R.id.profile_menu_about -> {
+                    showAbout()
+                    true
+                }
+                else ->
+                    super.onOptionsItemSelected(it)
+            }
+        }
     }
 
-    private fun initRecycler(){
+    private fun initRecycler() {
         profile_memes_rv.apply {
 
             adapter = this@ProfileFragment.adapter
@@ -89,17 +107,40 @@ class ProfileFragment : Fragment() {
         profile_user_description_tv.text = userInfo.userDescription
     }
 
-    fun showProgressBar(){
+    fun showProgressBar() {
         profile_progress_bar.visibility = View.VISIBLE
     }
 
-    fun hideProgressBar(){
+    fun hideProgressBar() {
         profile_progress_bar.visibility = View.INVISIBLE
     }
 
-    fun showMemes(memes: List<MemeDto>){
+    fun showMemes(memes: List<MemeDto>) {
         Log.d("ProfileFragment", "before adapter.setData()")
         adapter.setData(memes)
         Log.d("ProfileFragment", "after adapter.setData()")
+    }
+
+    fun showAlertDialog() {
+        context?.let {
+            val builder = AlertDialog.Builder(it)
+            builder.setTitle(R.string.dialog_title)
+                .setPositiveButton(R.string.dialog_cancel) { dialog, _ ->
+                    dialog.cancel()
+                }
+                .setNegativeButton(R.string.dialog_quit) { _, _ ->
+                    presenter.logout()
+                }
+            builder.create().show()
+        }
+    }
+
+    fun moveToLoginActivity() {
+        val intent = Intent(activity?.applicationContext, LoginActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun showAbout() {
+        Toast.makeText(context, "About", Toast.LENGTH_SHORT).show()
     }
 }
