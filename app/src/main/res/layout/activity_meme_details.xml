@@ -33,7 +33,7 @@
                     android:id="@+id/meme_close_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_meme_close"
+                    android:src="@drawable/ic_close"
                     android:backgroundTint="@color/colorSurfBackgroundLighter"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
