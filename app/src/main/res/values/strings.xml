@@ -18,4 +18,7 @@
     <string name="adder_header_hint">Заголовок</string>
     <string name="adder_main_hint">Текст</string>
     <string name="adder_excess_error">Слишком много!</string>
+    <string name="menu_about">О приложении</string>
+    <string name="menu_exit">Выйти</string>
+    <string name="profile_title">Профиль</string>
 </resources>
