@@ -17,7 +17,7 @@
             android:id="@+id/card_meme_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:transitionName="meme_pic"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +31,7 @@
             android:fontFamily="@font/roboto_medium"
             android:layout_marginTop="9dp"
             android:layout_marginStart="10dp"
+            android:transitionName="meme_title"
             app:layout_constraintTop_toBottomOf="@id/card_meme_image"
             app:layout_constraintLeft_toLeftOf="parent"/>
 

@@ -74,6 +74,7 @@
             android:fontFamily="@font/roboto_medium"
             android:textSize="24sp"
             android:layout_margin="16dp"
+            android:transitionName="meme_title"
             app:layout_constraintTop_toBottomOf="@+id/meme_toolbar"
             app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -82,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:transitionName="meme_pic"
             app:layout_constraintTop_toBottomOf="@+id/meme_title_tv"
             app:layout_constraintLeft_toLeftOf="parent" />
 

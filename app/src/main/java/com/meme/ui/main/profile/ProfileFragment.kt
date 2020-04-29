@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.meme.R
@@ -18,6 +20,7 @@ import com.meme.ui.main.feed.MemeDetailActivity
 import com.meme.ui.main.recycler.MItemDecorator
 import com.meme.ui.main.recycler.MemesAdapter
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.meme_card.*
 
 class ProfileFragment : Fragment() {
 
@@ -97,9 +100,21 @@ class ProfileFragment : Fragment() {
     }
 
     private fun showMemeDetailActivity(meme: MemeDto) {
-        val intent = Intent(activity, MemeDetailActivity::class.java)
+        val intent = Intent(context, MemeDetailActivity::class.java)
             .putExtra(MemeDetailActivity.MEME_EXTRA_NAME, meme)
-        activity?.startActivity(intent)
+        val p1 = Pair(card_meme_image as View, "meme_pic")
+        val p2 = Pair(card_title as View, "meme_title")
+
+        val options: ActivityOptionsCompat? =
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                requireActivity(),
+                p1,
+                p2
+            )
+        if (options != null) {
+            requireActivity().startActivity(intent, options.toBundle())
+        }
+
     }
 
     fun setUserData(userInfo: UserInfo) {

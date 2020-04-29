@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.util.Pair
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -14,6 +16,8 @@ import com.meme.model.dto.MemeDto
 import com.meme.ui.main.recycler.MItemDecorator
 import com.meme.ui.main.recycler.MemesAdapter
 import kotlinx.android.synthetic.main.fragment_feed.*
+import kotlinx.android.synthetic.main.meme_card.*
+
 
 class FeedFragment : Fragment() {
 
@@ -98,9 +102,20 @@ class FeedFragment : Fragment() {
     }
 
     private fun showMemeDetailActivity(meme: MemeDto) {
-        val intent = Intent(activity, MemeDetailActivity::class.java)
+        val intent = Intent(context, MemeDetailActivity::class.java)
             .putExtra(MemeDetailActivity.MEME_EXTRA_NAME, meme)
-        activity?.startActivity(intent)
+        val p1 = Pair(card_meme_image as View, "meme_pic")
+        val p2 = Pair(card_title as View, "meme_title")
+
+        val options: ActivityOptionsCompat? =
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                requireActivity(),
+                p1,
+                p2
+            )
+        if (options != null) {
+            requireActivity().startActivity(intent, options.toBundle())
+        }
     }
 
     fun showMemes(memes: List<MemeDto>) {
