@@ -3,5 +3,26 @@
     <string name="login_label_login">Логин</string>
     <string name="login_label_password">Пароль</string>
     <string name="login_button">ВОЙТИ</string>
+    <string name="phone_num_mask">"+7 ([000]) [000] [00] [00]"</string>
     <string name="empty_field_error">Поле не может быть пустым</string>
+    <string name="login_error">Во время запроса произошла ошибка, возможно вы неверно ввели логин/пароль</string>
+    <string name="password_length_tip">"Пароль должен содержать %d цифр"</string>
+    <string name="toolbar_popular_memes">Популярные мемы</string>
+    <string name="toolbar_search_hint">Поиск</string>
+    <string name="menu_feed_title">Feed</string>
+    <string name="menu_profile_title">Profile</string>
+    <string name="menu_adder_title">Adder</string>
+    <string name="meme_load_error">Не удалось загрузить ленту \nОбновите экран или попробуйте позже.</string>
+    <string name="meme_reload_error">Отсутствует интернет-соединение \nПопробуйте позже</string>
+    <string name="added_add">СОЗДАТЬ</string>
+    <string name="adder_title">Создать свой мем</string>
+    <string name="adder_header_hint">Заголовок</string>
+    <string name="adder_main_hint">Текст</string>
+    <string name="adder_excess_error">Слишком много!</string>
+    <string name="menu_about">О приложении</string>
+    <string name="menu_exit">Выйти</string>
+    <string name="profile_title">Профиль</string>
+    <string name="dialog_title">Действительно хотите выйти?</string>
+    <string name="dialog_quit">Выйти</string>
+    <string name="dialog_cancel">Отмена</string>
 </resources>
