@@ -40,7 +40,7 @@
     
     <style name="ThemeOverlay.SurfTheme" parent="Theme.AppCompat">
         <item name="android:colorBackground">@color/colorSurfBackgroundLighter</item>
-        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:background">@drawable/simple_button_ripple</item>
         <item name="android:textColor">@color/colorSurfText</item>
     </style>
     
@@ -53,7 +53,8 @@
     <style name="SurfTheme.AlertDialog.Button" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/colorSurfAccent</item>
         <item name="android:textSize">14sp</item>
-        <item name="textAllCaps">true</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:background">@drawable/simple_button_ripple</item>
     </style>
 
 </resources>
