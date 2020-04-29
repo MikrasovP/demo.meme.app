@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.snackbar.Snackbar
 import com.meme.R
-import com.meme.utils.PrefsEditor
+import com.redmadrobot.inputmask.MaskedTextChangedListener
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -20,11 +20,11 @@ class LoginActivity : AppCompatActivity() {
         presenter = LoginPresenter(this)
 
         initLoginButton()
-        //initLoginTF()
+        initLoginTF()
         initPasswordTF()
     }
 
-    private fun initLoginButton(){
+    private fun initLoginButton() {
         login_button.setOnClickListener {
             presenter.onLoginButtonClicked(
                 login_ext_et.text.toString(),
@@ -34,12 +34,13 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initLoginTF() {
-        login_tf.setSimpleTextChangeWatcher { theNewText, isError ->
-            presenter.onLoginTFChanged(
-                theNewText,
-                isError
-            )
-        }
+        val listener = MaskedTextChangedListener(
+            resources.getString(R.string.phone_num_mask),
+            login_ext_et
+        )
+
+        login_ext_et.addTextChangedListener(listener)
+        login_ext_et.onFocusChangeListener = listener
     }
 
     private fun initPasswordTF() {
