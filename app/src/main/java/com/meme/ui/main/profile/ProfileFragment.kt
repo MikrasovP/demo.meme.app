@@ -98,7 +98,7 @@ class ProfileFragment : Fragment() {
 
     private fun showMemeDetailActivity(meme: MemeDto) {
         val intent = Intent(activity, MemeDetailActivity::class.java)
-            .putExtra("meme", meme)
+            .putExtra(MemeDetailActivity.MEME_EXTRA_NAME, meme)
         activity?.startActivity(intent)
     }
 

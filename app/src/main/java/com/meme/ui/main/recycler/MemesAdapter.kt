@@ -1,7 +1,6 @@
 package com.meme.ui.main.recycler
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.meme.R
 import com.meme.model.dto.MemeDto
+import com.meme.ui.main.feed.MemeDetailActivity
 
 class MemesAdapter(
     private val onItemClickListener: (MemeDto) -> Unit
@@ -39,26 +39,32 @@ class MemesAdapter(
         private val imageView: ImageView = memeCard.findViewById(R.id.card_meme_image)
         private val titleTV: TextView = memeCard.findViewById(R.id.card_title)
         private val likeBtn: ImageButton = memeCard.findViewById(R.id.card_like_btn)
+        private val shareBtn: ImageButton = memeCard.findViewById(R.id.card_share_btn)
 
         init {
             likeBtn.setOnClickListener {
-                onLikeBtnClickListener(
-                    it,
-                    memes[adapterPosition]
+                MemeDetailActivity.onLikeClick(
+                    memes[adapterPosition],
+                    it
                 )
             }
-            memeCard.setOnClickListener { onItemClickListener(memes[adapterPosition]) }
+
+            shareBtn.setOnClickListener {
+                MemeDetailActivity.onShareClick(
+                    memes[adapterPosition],
+                    it.context
+                )
+            }
+
+            memeCard.setOnClickListener {
+                onItemClickListener(memes[adapterPosition])
+            }
         }
 
         fun bind(position: Int) {
             titleTV.text = memes[position].title
             Glide.with(memeCard).load(memes[position].photoUrl).into(imageView)
             likeBtn.isSelected = memes[position].isFavourite
-        }
-
-        private fun onLikeBtnClickListener(view: View, meme: MemeDto){
-            meme.isFavourite = !meme.isFavourite
-            view.isSelected = !view.isSelected
         }
 
     }
