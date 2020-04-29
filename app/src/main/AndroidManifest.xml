@@ -25,14 +25,16 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:theme="@style/SurfTheme.LightStatusBar.DarkNavBar"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.main.feed.MemeDetailActivity"
             android:theme="@style/SurfTheme.LightStatusBar.LightBackground.LightNavBar" />
         <activity
             android:name=".ui.main.adder.AdderActivity"
             android:theme="@style/SurfTheme.LightStatusBar"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
