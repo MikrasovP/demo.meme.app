@@ -12,6 +12,7 @@
         <item name="android:navigationBarColor">@color/colorSurfBackground</item>
         <item name="android:statusBarColor">@color/colorSurfBackground</item>
         <item name="android:textColorTertiary">@color/colorSurfTertiary</item>
+        <item name="alertDialogTheme">@style/SurfTheme.AlertDialog</item>
     </style>
 
     <style name="SurfTheme.LightStatusBar" parent="SurfTheme">
@@ -41,6 +42,18 @@
         <item name="android:colorBackground">@color/colorSurfBackgroundLighter</item>
         <item name="android:background">?android:attr/selectableItemBackground</item>
         <item name="android:textColor">@color/colorSurfText</item>
+    </style>
+    
+    <style name="SurfTheme.AlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:windowBackground">@color/colorSurfBackgroundLighter</item>
+        <item name="android:textColorPrimary">@color/colorSurfText</item>
+        <item name="buttonBarButtonStyle">@style/SurfTheme.AlertDialog.Button</item>
+    </style>
+
+    <style name="SurfTheme.AlertDialog.Button" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/colorSurfAccent</item>
+        <item name="android:textSize">14sp</item>
+        <item name="textAllCaps">true</item>
     </style>
 
 </resources>
