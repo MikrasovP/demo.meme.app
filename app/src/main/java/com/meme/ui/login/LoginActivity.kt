@@ -8,16 +8,21 @@ import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.snackbar.Snackbar
 import com.meme.R
 import com.redmadrobot.inputmask.MaskedTextChangedListener
+import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import javax.inject.Inject
 
-class LoginActivity : AppCompatActivity() {
-
-    private lateinit var presenter: LoginPresenter
+class LoginActivity : DaggerAppCompatActivity() {
+    @Inject
+    lateinit var presenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        presenter = LoginPresenter(this)
+
+        AndroidInjection.inject(this)
 
         initLoginButton()
         initLoginTF()

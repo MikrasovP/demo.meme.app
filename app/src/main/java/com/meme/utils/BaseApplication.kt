@@ -2,12 +2,15 @@ package com.meme.utils
 
 import android.app.Application
 import androidx.room.Room
+import com.meme.di.DaggerAppComponent
 import com.meme.model.database.AppDatabase
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
 
-class App : Application() {
+class BaseApplication : DaggerApplication() {
 
     companion object {
-        lateinit var appInstance: App
+        lateinit var baseApplicationInstance: BaseApplication
             private set
     }
 
@@ -15,12 +18,16 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appInstance = this
+        baseApplicationInstance = this
         database = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database")
             .fallbackToDestructiveMigration()
             .build()
 
         PrefsEditor.build(applicationContext, "com.meme")
+    }
+
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.builder().application(this).build()
     }
 
     fun getDatabase(): AppDatabase {

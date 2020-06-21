@@ -2,14 +2,14 @@ package com.meme.model.repo
 
 import com.meme.model.database.AppDatabase
 import com.meme.model.dto.MemeDto
-import com.meme.utils.App
+import com.meme.utils.BaseApplication
 import com.meme.utils.MemeConverter
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 
 object DatabaseRepo {
     private val db: AppDatabase by lazy {
-        App.appInstance.getDatabase()
+        BaseApplication.baseApplicationInstance.getDatabase()
     }
 
     fun getMeme(id: Long): Observable<MemeDto?> =

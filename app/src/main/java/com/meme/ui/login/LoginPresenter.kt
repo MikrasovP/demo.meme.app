@@ -8,9 +8,10 @@ import com.meme.ui.main.MainActivity
 import com.meme.utils.PrefsEditor
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
 
-class LoginPresenter(
+class LoginPresenter @Inject constructor(
     private val activity: LoginActivity
 ) {
     private val authRepo = MemesNetRepo
