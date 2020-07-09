@@ -15,7 +15,8 @@ import javax.inject.Inject
 class LoginPresenter(
     private val activity: LoginActivity
 ) {
-    private val authRepo = MemesNetRepo
+    @Inject
+    lateinit var memesNetRepo : MemesNetRepo
 
     @Inject
     lateinit var prefsEditor: PrefsEditor
@@ -26,7 +27,7 @@ class LoginPresenter(
     }
 
     private fun auth(login: String, password: String) {
-        authRepo.auth(login, password)
+        memesNetRepo.auth(login, password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

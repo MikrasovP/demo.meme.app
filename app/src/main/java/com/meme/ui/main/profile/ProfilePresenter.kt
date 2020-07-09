@@ -18,6 +18,9 @@ class ProfilePresenter(
     @Inject
     lateinit var prefsEditor: PrefsEditor
 
+    @Inject
+    lateinit var memesNetRepo: MemesNetRepo
+
     fun onActivityCreated() {
         val app: App = fragment.requireActivity().application as App
         app.appComponent.inject(this)
@@ -50,7 +53,7 @@ class ProfilePresenter(
     }
 
     fun logout() {
-        MemesNetRepo.logout()
+        memesNetRepo.logout()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

@@ -9,37 +9,38 @@ import io.reactivex.rxjava3.core.Observable
 import javax.inject.Inject
 
 class DatabaseRepo(
-    private var db: AppDatabase
+    private val db: AppDatabase,
+    private val memeConverter: MemeConverter
 ) {
 
     fun getMeme(id: Long): Observable<MemeDto?> =
         Observable.fromCallable {
-            MemeConverter.fromEntityToDto(db.memeDao().getById(id))
+            memeConverter.fromEntityToDto(db.memeDao().getById(id))
         }
 
     fun getMemes(): Observable<List<MemeDto>> =
         Observable.fromCallable {
-            MemeConverter.fromEntityListToDto(db.memeDao().getMemes())
+            memeConverter.fromEntityListToDto(db.memeDao().getMemes())
         }
 
     fun insert(meme: MemeDto): Completable =
         Completable.fromCallable {
             db.memeDao().insert(
-                MemeConverter.fromDtoToEntityNonNull(meme)
+                memeConverter.fromDtoToEntityNonNull(meme)
             )
         }
 
     fun update(meme: MemeDto): Completable =
         Completable.fromCallable {
             db.memeDao().update(
-                MemeConverter.fromDtoToEntityNonNull(meme)
+                memeConverter.fromDtoToEntityNonNull(meme)
             )
         }
 
     fun delete(meme: MemeDto): Completable =
         Completable.fromCallable {
             db.memeDao().update(
-                MemeConverter.fromDtoToEntityNonNull(meme)
+                memeConverter.fromDtoToEntityNonNull(meme)
             )
         }
 }

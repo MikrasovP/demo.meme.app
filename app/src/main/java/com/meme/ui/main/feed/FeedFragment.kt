@@ -43,6 +43,8 @@ class FeedFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         retainInstance = true
 
+        feedPresenter.onActivityCreated()
+
         initRecycler()
     }
 

@@ -7,8 +7,9 @@ import com.meme.model.service.NetworkService
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 
-object MemesNetRepo {
-    private val service = NetworkService
+class MemesNetRepo(
+    private val service: NetworkService
+) {
 
     fun auth(login: String, password: String): Observable<AuthInfoDto> =
         service.auth(LoginUserRequestDto(login, password))
