@@ -5,18 +5,29 @@ import com.meme.R
 import com.meme.model.dto.AuthInfoDto
 import com.meme.model.repo.MemesNetRepo
 import com.meme.ui.main.MainActivity
+import com.meme.utils.App
 import com.meme.utils.PrefsEditor
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
 
 class LoginPresenter(
     private val activity: LoginActivity
 ) {
-    private val authRepo = MemesNetRepo
+    @Inject
+    lateinit var memesNetRepo : MemesNetRepo
+
+    @Inject
+    lateinit var prefsEditor: PrefsEditor
+
+    init {
+        val app: App = activity.application as App
+        app.appComponent.inject(this)
+    }
 
     private fun auth(login: String, password: String) {
-        authRepo.auth(login, password)
+        memesNetRepo.auth(login, password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -27,7 +38,7 @@ class LoginPresenter(
     }
 
     private fun setUserInfo(authInfoDto: AuthInfoDto) {
-        PrefsEditor.setUser(authInfoDto)
+        prefsEditor.setUser(authInfoDto)
         moveToMainActivity()
     }
 

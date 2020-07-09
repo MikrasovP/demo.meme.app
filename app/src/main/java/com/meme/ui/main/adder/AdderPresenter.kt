@@ -4,19 +4,29 @@ import android.text.Editable
 import com.meme.R
 import com.meme.model.dto.MemeDto
 import com.meme.model.repo.DatabaseRepo
+import com.meme.utils.App
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
+import javax.inject.Inject
 
 class AdderPresenter(
     private val activity: AdderActivity
 ) {
+
+    @Inject
+    lateinit var databaseRepo: DatabaseRepo
 
     private var isHeaderEmpty: Boolean = true
     private var isMainEmpty: Boolean = true
     private var isImageEmpty: Boolean = true
 
     private lateinit var pictureUrl: String
+
+    fun onActivityCreated(){
+        val app: App = activity.application as App
+        app.appComponent.inject(this)
+    }
 
     private fun checkAddBtn() {
         if (!isMainEmpty && !isHeaderEmpty && !isImageEmpty)
@@ -48,7 +58,7 @@ class AdderPresenter(
     }
 
     fun onAddBtnClicked(){
-        DatabaseRepo.insert(MemeDto(
+        databaseRepo.insert(MemeDto(
             title = activity.getHeaderText(),
             description = activity.getMainText(),
             isFavourite = false,

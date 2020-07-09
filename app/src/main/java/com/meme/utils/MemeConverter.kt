@@ -3,7 +3,7 @@ package com.meme.utils
 import com.meme.model.database.MemeEntity
 import com.meme.model.dto.MemeDto
 
-object MemeConverter {
+class MemeConverter {
     fun fromEntityToDto(memeEntity: MemeEntity?): MemeDto? {
         if (memeEntity == null)
             return null

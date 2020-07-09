@@ -2,7 +2,6 @@ package com.meme.ui.main.profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -131,9 +130,7 @@ class ProfileFragment : Fragment() {
     }
 
     fun showMemes(memes: List<MemeDto>) {
-        Log.d("ProfileFragment", "before adapter.setData()")
         adapter.setData(memes)
-        Log.d("ProfileFragment", "after adapter.setData()")
     }
 
     fun showAlertDialog() {
