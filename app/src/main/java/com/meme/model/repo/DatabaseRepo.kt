@@ -6,11 +6,11 @@ import com.meme.utils.App
 import com.meme.utils.MemeConverter
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
+import javax.inject.Inject
 
-object DatabaseRepo {
-    private val db: AppDatabase by lazy {
-        App.appInstance.getDatabase()
-    }
+class DatabaseRepo(
+    private var db: AppDatabase
+) {
 
     fun getMeme(id: Long): Observable<MemeDto?> =
         Observable.fromCallable {

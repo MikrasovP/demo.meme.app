@@ -21,6 +21,8 @@ class AdderActivity : AppCompatActivity() {
         setContentView(R.layout.activity_adder)
         setSupportActionBar(findViewById(R.id.adder_toolbar))
 
+        presenter.onActivityCreated()
+
         initViews()
         setListeners()
     }

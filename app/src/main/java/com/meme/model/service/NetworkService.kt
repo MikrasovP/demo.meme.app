@@ -13,7 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object MemesNetworkService {
+object NetworkService {
     private const val BASE_URL = "https://demo2407529.mockable.io/"
 
     private val retrofit: Retrofit

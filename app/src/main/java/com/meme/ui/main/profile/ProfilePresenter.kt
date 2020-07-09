@@ -1,28 +1,37 @@
 package com.meme.ui.main.profile
 
-import android.util.Log
 import com.meme.model.repo.DatabaseRepo
 import com.meme.model.repo.MemesNetRepo
+import com.meme.utils.App
 import com.meme.utils.PrefsEditor
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
 class ProfilePresenter(
     private val fragment: ProfileFragment
 ) {
 
+    @Inject
+    lateinit var databaseRepo: DatabaseRepo
+
+    @Inject
+    lateinit var prefsEditor: PrefsEditor
+
     fun onActivityCreated() {
-        fragment.setUserData(PrefsEditor.getUser())
+        val app: App = fragment.requireActivity().application as App
+        app.appComponent.inject(this)
+
+        fragment.setUserData(prefsEditor.getUser())
     }
 
     private fun loadMemes() {
-        DatabaseRepo.getMemes()
+        databaseRepo.getMemes()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 fragment.hideProgressBar()
                 fragment.showMemes(it)
-                Log.d("ProfilePresenter", it.toString())
             }, {
                 throw it
             })
@@ -45,7 +54,7 @@ class ProfilePresenter(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                PrefsEditor.removeUser()
+                prefsEditor.removeUser()
                 fragment.activity?.finish()
                 fragment.moveToLoginActivity()
             }, {

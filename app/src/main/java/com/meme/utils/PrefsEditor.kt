@@ -6,13 +6,15 @@ import com.meme.model.UserInfo
 import com.meme.model.dto.AuthInfoDto
 import com.pixplicity.easyprefs.library.Prefs
 
-object PrefsEditor {
-    private const val TOKEN_KEY = "token"
-    private const val USER_ID_KEY = "id"
-    private const val USERNAME_KEY = "username"
-    private const val FIRST_NAME_KEY = "firstName"
-    private const val LAST_NAME_KEY = "lastName"
-    private const val USER_DESCRIPTION_KEY = "userDescription"
+class PrefsEditor {
+    companion object{
+        private const val TOKEN_KEY = "token"
+        private const val USER_ID_KEY = "id"
+        private const val USERNAME_KEY = "username"
+        private const val FIRST_NAME_KEY = "firstName"
+        private const val LAST_NAME_KEY = "lastName"
+        private const val USER_DESCRIPTION_KEY = "userDescription"
+    }
 
     /**
      * This method should be invoked after application start (in App class, for example)
