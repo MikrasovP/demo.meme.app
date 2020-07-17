@@ -15,8 +15,12 @@ import javax.inject.Inject
 class LoginPresenter(
     private val activity: LoginActivity
 ) {
+    companion object {
+        private const val PASSWORD_LENGTH = 8
+    }
+
     @Inject
-    lateinit var memesNetRepo : MemesNetRepo
+    lateinit var memesNetRepo: MemesNetRepo
 
     @Inject
     lateinit var prefsEditor: PrefsEditor
@@ -56,8 +60,7 @@ class LoginPresenter(
 
     fun onLoginButtonClicked(login: String, password: String) {
         when {
-            password.length !=
-                    activity.resources.getInteger(R.integer.password_length) -> {
+            password.length != PASSWORD_LENGTH -> {
                 activity.showPasswordTFError()
             }
             login.isEmpty() -> {
